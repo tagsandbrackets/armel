@@ -1,6 +1,7 @@
 class Element
-  def initialize(name, &block)
+  def initialize(name, attributes = {}, &block)
     @name = name
+    @attributes = attributes
     @elements = []
     DSL.new(self, &block).build
   end
@@ -10,8 +11,16 @@ class Element
   end
   
   def to_s
-    return "<#{@name}/>" if @elements.empty?
+    return "<#{open_tag}/>" if @elements.empty?
     "<#{@name}>#{@elements.map(&:to_s).join}</#{@name}>"
+  end
+  
+  def open_tag
+    "#{@name}#{attrs_to_s}"
+  end
+  
+  def attrs_to_s
+    @attributes.inject(" ") { |str, (k, v)| str << "#{k}='#{v}' " }
   end
   
   class DSL
