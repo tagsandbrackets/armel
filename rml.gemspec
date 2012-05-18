@@ -4,7 +4,7 @@ require "rml/version"
 
 Gem::Specification.new do |s|
   s.name        = "rml"
-  s.version     = Rml::VERSION
+  s.version     = RML::VERSION
   s.authors     = ["Omar Rodriguez"]
   s.email       = ["omarjavier15@gmail.com"]
   s.homepage    = ""
