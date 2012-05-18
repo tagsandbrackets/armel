@@ -1,18 +1,18 @@
-require 'spec_helper'
+require_relative 'spec_helper'
 
 describe Element do
-  context "#create" do
-    context "simple element" do
+  describe "#create" do
+    describe "simple element" do
       subject { Element.new(:mytag).to_s }
-      it { should == "<mytag />" }
+      it { must_equal "<mytag />" }
 
-      context "with attributes" do
+      describe "with attributes" do
         subject { Element.new(:div, id: 'foo', class: 'bar').to_s }
         it { should == "<div id='foo' class='bar' />" }
       end
     end
 
-    context "with text" do
+    describe "with text" do
       subject do
         Element.new(:h1) { self << "Hello World" }.to_s
       end
@@ -20,14 +20,14 @@ describe Element do
       it { should == "<h1>Hello World</h1>" }
     end
 
-    context "nested element" do
+    describe "nested element" do
       subject do 
         Element.new(:with_nested) { nested }.to_s
       end
 
       it { should == "<with_nested><nested /></with_nested>" }
       
-      context "with attributes" do
+      describe "with attributes" do
         subject do 
           Element.new(:form) { input id: 'foo', class: 'bar' }.to_s
         end
