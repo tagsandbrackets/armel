@@ -27,6 +27,15 @@ describe RML::Document do
     }.should == "<h1>Hello World</h1>"
   end
   
+  it "should define elements with text in outer and inner tag" do
+    doc.string {
+      div { 
+        self << "Hello"
+        h1 { self << "World" }
+      }
+    }.should == "<div>Hello<h1>World</h1></div>"
+  end
+  
   it "should define elements with attributes and text using short sintax" do
     doc.string {
       h1 "Hello World", id: 'foo', class: 'bar'
@@ -81,5 +90,5 @@ describe RML::Document do
         p "Test"
       }
     }.should == "<div id='foo' class='main'><p>Test</p></div>"
-  end
+  end  
 end

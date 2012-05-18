@@ -19,16 +19,27 @@ module RML
     end
     
     def to_s
-      return "<#{open_tag} />" if @elements.empty?
-      "<#{open_tag}>#{@elements.map(&:to_s).join}</#{@name}>"
+      @elements.empty? ? simple_tag : composed_tag
     end
     
+    def simple_tag
+      "<#{open_tag} />"
+    end
+    
+    def composed_tag
+      "<#{open_tag}>#{elements_to_s}</#{@name}>"
+    end
+        
     def open_tag
       "#{@name}#{attrs_to_s}"
     end
     
     def attrs_to_s
       @attributes.inject("") { |str, (k, v)| str << " #{k}='#{val_to_s v}'" }
+    end
+    
+    def elements_to_s
+      @elements.map(&:to_s).join
     end
     
     def val_to_s(val)
