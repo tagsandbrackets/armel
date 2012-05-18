@@ -18,8 +18,8 @@ module RML
     end
     
     def to_s
-      return "<#{open_tag}/>" if @elements.empty?
-      "<#{@name}>#{@elements.map(&:to_s).join}</#{@name}>"
+      return "<#{open_tag} />" if @elements.empty?
+      "<#{open_tag}>#{@elements.map(&:to_s).join}</#{@name}>"
     end
     
     def open_tag
@@ -27,7 +27,7 @@ module RML
     end
     
     def attrs_to_s
-      @attributes.inject(" ") { |str, (k, v)| str << "#{k}='#{v}' " }
+      @attributes.inject("") { |str, (k, v)| str << " #{k}='#{v}'" }
     end
     
     class DSL
@@ -50,3 +50,4 @@ module RML
     end
   end
 end
+
