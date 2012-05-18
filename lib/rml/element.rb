@@ -34,7 +34,7 @@ class Element
     end
     
     def method_missing(method, *args, &block)
-      @element.add Element.new(method, &block)
+      @element.add Element.new(method, args.first, &block)
     end
     
     def build

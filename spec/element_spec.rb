@@ -26,6 +26,14 @@ describe Element do
       end
 
       it { should == "<with_nested><nested /></with_nested>" }
+      
+      context "with attributes" do
+        subject do 
+          Element.new(:form) { input id: 'foo', class: 'bar' }.to_s
+        end
+        
+        it { should == "<form><input id='foo' class='bar' /><form/>"}
+      end
     end    
   end
 end
