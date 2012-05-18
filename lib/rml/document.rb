@@ -1,15 +1,11 @@
 module RML
-  class Document
+  class Document < Element
     def initialize(&block)
-      @root = Element.new :root, &block
-    end
-    
-    def root
-      @root
+      super :root, &block
     end
     
     def to_s
-      @root.elements.map(&:to_s).join
+      elements.map(&:to_s).join
     end
     
     class << self
