@@ -5,8 +5,8 @@ require "rml/version"
 Gem::Specification.new do |s|
   s.name        = "rml"
   s.version     = RML::VERSION
-  s.authors     = ["Omar Rodriguez"]
-  s.email       = ["omarjavier15@gmail.com"]
+  s.authors     = ["Omar Rodriguez", "Rafael George"]
+  s.email       = ["omarjavier15@gmail.com", "george.rafael@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{Ruby markup language}
   s.description = %q{RML: Is a DSL for generating HTML from Ruby code}
