@@ -11,6 +11,7 @@ module RML
     
     def add(element)
       @elements << element
+      element
     end
     
     def elements
@@ -27,7 +28,17 @@ module RML
     end
     
     def attrs_to_s
-      @attributes.inject("") { |str, (k, v)| str << " #{k}='#{v}'" }
+      @attributes.inject("") { |str, (k, v)| str << " #{k}='#{val_to_s v}'" }
+    end
+    
+    def val_to_s(val)
+      val.is_a?(Array) ? val.join(" ") : val
+    end
+    
+    def method_missing(method)
+      @attributes[:class] ||= [] 
+      @attributes[:class] << method.to_s
+      self
     end
     
     class DSL
