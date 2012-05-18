@@ -32,8 +32,8 @@ describe Element do
           Element.new(:form) { input id: 'foo', class: 'bar' }.to_s
         end
         
-        it { should == "<form><input id='foo' class='bar' /><form/>"}
+        it { should == "<form><input id='foo' class='bar' /></form>" }
       end
-    end    
+    end
   end
 end
