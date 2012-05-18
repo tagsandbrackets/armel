@@ -74,4 +74,12 @@ describe RML::Document do
       div(id: 'foo').main
     }.should == "<div id='foo' class='main' />"
   end
+  
+  it "should define element with class, attributes and nested element using class shortcut sintax" do
+    doc.string {
+      div(id: 'foo').main {
+        p "Test"
+      }
+    }.should == "<div id='foo' class='main'><p>Test</p></div>"
+  end
 end
