@@ -21,6 +21,12 @@ describe RML::Document do
     }.should == "<h1>Hello World</h1>"
   end
   
+  it "should define elements with text using short sintax" do
+    doc.string {
+      h1 "Hello World"
+    }.should == "<h1>Hello World</h1>"
+  end
+  
   it "should define nested elements" do
     doc.string {
       with_nested { 
