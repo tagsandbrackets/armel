@@ -10,6 +10,10 @@ class Element
     @elements << element
   end
   
+  def elements
+    @elements
+  end
+  
   def to_s
     return "<#{open_tag}/>" if @elements.empty?
     "<#{@name}>#{@elements.map(&:to_s).join}</#{@name}>"
