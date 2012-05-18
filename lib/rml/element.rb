@@ -29,6 +29,10 @@ class Element
       instance_eval &block if block_given?
     end
     
+    def <<(text)
+      @element.add text
+    end
+    
     def method_missing(method, *args, &block)
       @element.add Element.new(method, &block)
     end

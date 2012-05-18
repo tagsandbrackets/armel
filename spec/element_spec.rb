@@ -12,6 +12,16 @@ describe Element do
       end
     end
     
+    context "with text" do
+      subject do
+        Element.new(:h1) {
+          self << "Hello World"
+        }
+      end
+      
+      it { should == "<h1>Hello World</h1>" }
+    end
+    
     context "nested element" do
       subject do 
         Element.new(:with_nested) {
