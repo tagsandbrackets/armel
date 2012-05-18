@@ -13,11 +13,13 @@ describe Element do
     end
 
     context "with text" do
-      subject do
-        Element.new(:h1) { self << "Hello World" }.to_s
-      end
+      context "explicit sintax" do
+        subject do
+          Element.new(:h1) { self << "Hello World" }.to_s
+        end
 
-      it { should == "<h1>Hello World</h1>" }
+        it { should == "<h1>Hello World</h1>" }
+      end
     end
 
     context "nested element" do
