@@ -39,6 +39,21 @@ describe RML::Element do
         end
       end
     end
+    
+    context "With CDATA" do
+      specify "With CDATA" do
+        described_class.string(:script) { 
+          cdata! %{ alert('hi') }
+        }.should == "<script><![CDATA[ alert('hi') ]]></script>"
+      end
+      
+      specify "And nested elements" do
+        described_class.string(:script) { 
+          cdata! %{ alert('hi') }
+          title
+        }.should == "<script><![CDATA[ alert('hi') ]]><title /></script>"
+      end
+    end
   end
   
   context "Nest elements" do
