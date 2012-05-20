@@ -10,7 +10,7 @@ module RML
     end
     
     def to_s
-      @attrs.map { |k, v| attr_s k, v }.join ' '
+      @attrs.map { |k, v| attr_s k, v }.compact.join ' '
     end
     
     class << self
@@ -27,7 +27,7 @@ module RML
       
       def _attr_s(attr, val)
         case val
-          when nil then ''
+          when nil then nil
           when Fixnum then "#{attr}=#{val}"
           when String then "#{attr}='#{val}'"
           else val.to_s 
