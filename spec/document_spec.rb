@@ -64,31 +64,5 @@ describe RML::Document do
         input id: 'foo', class: 'bar' 
       } 
     }.should == "<form><input id='foo' class='bar' /></form>"
-  end
-  
-  it "should define element with class using class shortcut sintax" do
-    doc.string {
-      div.main
-    }.should == "<div class='main' />"
-  end
-  
-  it "should define element with class using class chain sintax" do
-    doc.string {
-      div.main.top.max
-    }.should == "<div class='main top max' />"
-  end
-  
-  it "should define element with class and attributes using class shortcut sintax" do
-    doc.string {
-      div(id: 'foo').main
-    }.should == "<div id='foo' class='main' />"
-  end
-  
-  it "should define element with class, attributes and nested element using class shortcut sintax" do
-    doc.string {
-      div(id: 'foo').main {
-        p "Test"
-      }
-    }.should == "<div id='foo' class='main'><p>Test</p></div>"
   end  
 end

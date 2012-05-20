@@ -45,14 +45,7 @@ module RML
     def val_to_s(val)
       val.is_a?(Array) ? val.join(" ") : val
     end
-    
-    def method_missing(method, *args, &block)
-      @attributes[:class] ||= [] 
-      @attributes[:class] << method.to_s
-      DSL.new(self, &block).build
-      self
-    end
-    
+        
     class DSL
       def initialize(element, &block)
         @element = element
