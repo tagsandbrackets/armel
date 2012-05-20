@@ -5,7 +5,7 @@ module RML
     end
     
     def to_s
-      elements.map(&:to_s).join
+      elements.to_s
     end
     
     class << self

@@ -3,18 +3,16 @@ module RML
     def initialize(name, attributes = {}, text = nil, &block)
       @name = name
       @attributes = attributes
-      @elements = []
-      add(text) if text
+      @elements = Elements.new text
       DSL.new(self, &block).build
-    end
-    
-    def add(element)
-      @elements << element
-      element
     end
     
     def elements
       @elements
+    end
+    
+    def add(e)
+      @elements.add e
     end
     
     def to_s
@@ -26,15 +24,11 @@ module RML
     end
     
     def composed_tag
-      "<#{open_tag}>#{elements_to_s}</#{@name}>"
+      "<#{open_tag}>#{@elements}</#{@name}>"
     end
         
     def open_tag
       @attributes.empty? ? "#{@name}" : "#{@name} #{@attributes}"
-    end
-    
-    def elements_to_s
-      @elements.map(&:to_s).join
     end
   end
 end
