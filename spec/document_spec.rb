@@ -10,10 +10,20 @@ describe RML::Document do
       }.should == "<mytag />"
     end
     
-    specify "With attributes" do
-      doc.string {
-        div id: 'foo', class: 'bar'
-      }.should == "<div id='foo' class='bar' />" 
+    context "With attributes" do
+      specify "With attributes" do
+        doc.string {
+          div id: 'foo', class: 'bar'
+        }.should == "<div id='foo' class='bar' />" 
+      end
+      
+      specify "And nested element" do
+        doc.string {
+          with_nested(id: 'foo') { 
+            nested 
+          }
+        }.should == "<with_nested id='foo'><nested /></with_nested>"
+      end
     end
     
     context "With text" do
@@ -60,15 +70,7 @@ describe RML::Document do
       }.should == "<sandwitch>bread<ham />bread</sandwitch>"
     end
     
-    specify "With attributes and nested element" do
-      doc.string {
-        with_nested(id: 'foo') { 
-          nested 
-        }
-      }.should == "<with_nested id='foo'><nested /></with_nested>"
-    end
-    
-    specify "With attributes on the parent" do
+    specify "With attributes" do
       doc.string {
         form { 
           input id: 'foo', class: 'bar' 
