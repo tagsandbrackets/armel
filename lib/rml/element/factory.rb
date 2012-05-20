@@ -21,10 +21,6 @@ module RML
           @elements ||= Elements.new find_text
         end
         
-        def has_text?
-          !text.nil?
-        end
-        
         private
           def find_attributes
             @args.find { |a| a.is_a? Hash } || {}

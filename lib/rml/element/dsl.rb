@@ -14,10 +14,6 @@ module RML
         @element.add Factory.create(method, *args, &block)
       end
       
-      def p(*args, &block)
-        method_missing(:p, *args, &block)
-      end
-      
       def build
         @element
       end
