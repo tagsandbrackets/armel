@@ -1,11 +1,10 @@
 module RML
   class Element
-    def initialize(name, *args, &block)
+    def initialize(name, attributes = {}, text = nil, &block)
       @name = name
-      elem_args = ElementArgs.new *args
-      @attributes = elem_args.attributes
+      @attributes = attributes
       @elements = []
-      @elements << elem_args.text if elem_args.has_text?
+      add(text) if text
       DSL.new(self, &block).build
     end
     
@@ -49,7 +48,7 @@ module RML
       end
       
       def method_missing(method, *args, &block)
-        @element.add Element.new(method, *args, &block)
+        @element.add Factory.create(method, *args, &block)
       end
       
       def p(*args, &block)
@@ -58,6 +57,15 @@ module RML
       
       def build
         @element
+      end
+    end
+    
+    class Factory
+      class << self
+        def create(name, *args, &block)
+          elem_args = ElementArgs.new *args
+          Element.new(name, elem_args.attributes, elem_args.text, &block)
+        end
       end
     end
   end
