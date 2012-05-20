@@ -1,21 +1,19 @@
 require 'spec_helper'
 
 describe RML::Element do
-  let(:elem) { RML::Element }
-  
   context "Single elmenet" do
     specify "Empty" do
-      elem.string(:mytag).should == "<mytag />"
+      described_class.string(:mytag).should == "<mytag />"
     end
     
     context "With attributes" do
       specify "With attributes" do
-        elem.string(:div, id: 'foo', class: 'bar')
+        described_class.string(:div, id: 'foo', class: 'bar')
           .should == "<div id='foo' class='bar' />" 
       end
       
       specify "And nested element" do
-        elem.string(:with_nested, id: 'foo') { 
+        described_class.string(:with_nested, id: 'foo') { 
           nested 
         }.should == "<with_nested id='foo'><nested /></with_nested>"
       end
@@ -24,19 +22,19 @@ describe RML::Element do
     context "With text" do
       context "Explicit sintax" do
         specify "Explicit sintax" do
-          elem.string(:h1) { self << "Hello World" }
+          described_class.string(:h1) { self << "Hello World" }
             .should == "<h1>Hello World</h1>"
         end
       end
       
       context "Short sintax" do
         specify "Short sintax" do
-          elem.string(:h1, {}, "Hello World")
+          described_class.string(:h1, {}, "Hello World")
             .should == "<h1>Hello World</h1>"
         end
         
         specify "And attributes" do
-          elem.string(:h1, { id: 'foo', class: 'bar' }, "Hello World")
+          described_class.string(:h1, { id: 'foo', class: 'bar' }, "Hello World")
             .should == "<h1 id='foo' class='bar'>Hello World</h1>"
         end
       end
@@ -45,13 +43,13 @@ describe RML::Element do
   
   context "Nest elements" do
     specify "Empty element" do
-      elem.string(:with_nested) { 
+      described_class.string(:with_nested) { 
         nested 
       }.should == "<with_nested><nested /></with_nested>"
     end
 
     specify "Surrounded by text" do
-      elem.string(:sandwitch) { 
+      described_class.string(:sandwitch) { 
         self << "bread"
         ham
         self << "bread"
@@ -59,7 +57,7 @@ describe RML::Element do
     end
     
     specify "With attributes" do
-      elem.string(:form) { 
+      described_class.string(:form) { 
         input id: 'foo', class: 'bar' 
       }.should == "<form><input id='foo' class='bar' /></form>"
     end  

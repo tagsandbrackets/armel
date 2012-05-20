@@ -1,21 +1,19 @@
 require 'spec_helper'
 
 describe RML::Document do
-  let(:doc) { RML::Document }
-  
   specify "Empty" do
-    doc.string.should == ''
+    described_class.string.should == ''
   end
   
   context "With elements" do
     specify "Single" do
-      doc.string {
+      described_class.string {
         xml
       }.should == "<xml />"
     end
     
     specify "Multiple" do
-      doc.string {
+      described_class.string {
         one
         two
       }.should == "<one /><two />"
