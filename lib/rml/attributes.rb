@@ -1,7 +1,7 @@
 module RML
   class Attributes
     def initialize(attr_hash, ns = nil)
-      @attrs = attr_hash
+      @attrs = attr_hash ||= {}
       @ns = ns
     end
     
@@ -21,7 +21,7 @@ module RML
     
     private
       def attr_s(attr, val)
-        return Attributes.string(val, attr) if val.is_a? Hash
+        return self.class.string(val, attr) if val.is_a? Hash
         @ns ? _attr_s("#{@ns}:#{attr}", val) : _attr_s(attr, val)
       end
       

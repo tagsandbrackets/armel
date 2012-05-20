@@ -4,7 +4,7 @@ module RML
       class << self
         def create(name, *args, &block)
           elem_args = Args.new *args
-          Element.new(name, elem_args.attributes, elem_args.text, &block)
+          Element.new(name, elem_args.attributes, elem_args.elements, &block)
         end
       end
       
@@ -17,8 +17,8 @@ module RML
           @attributes ||= RML::Attributes.new find_attributes
         end
         
-        def text
-          @text ||= find_text
+        def elements
+          @elements ||= Elements.new find_text
         end
         
         def has_text?

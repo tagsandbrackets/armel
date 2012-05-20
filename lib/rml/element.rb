@@ -1,9 +1,9 @@
 module RML
   class Element
-    def initialize(name, attributes = {}, text = nil, &block)
+    def initialize(name, attributes = {}, elements, &block)
       @name = name
       @attributes = attributes
-      @elements = Elements.new text
+      @elements = elements
       DSL.new(self, &block).build
     end
     
@@ -29,6 +29,12 @@ module RML
         
     def open_tag
       @attributes.empty? ? "#{@name}" : "#{@name} #{@attributes}"
+    end
+    
+    class << self
+      def string(name, attributes = {}, text = nil, &block)
+        Factory.create(name, attributes, text, &block).to_s
+      end
     end
   end
 end
