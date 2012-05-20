@@ -1,5 +1,5 @@
 module RML
-  class AttributesList < Hash
+  class Attributes
     def initialize(attr_hash)
       @attrs = attr_hash
     end
