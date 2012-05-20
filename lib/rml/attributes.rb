@@ -30,7 +30,7 @@ module RML
           when nil then nil
           when Fixnum then "#{attr}=#{val}"
           when String then "#{attr}='#{val}'"
-          else val.to_s 
+          else "#{attr}='#{val.to_s}'" 
         end
       end
   end

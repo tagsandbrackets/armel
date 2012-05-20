@@ -16,6 +16,10 @@ describe RML::Attributes do
       attrs.string(id: nil, text: 'foo').should == "text='foo'"
     end
     
+    specify "Object value" do
+      attrs.string(val: Object.new).should match /^val='#<Object:.*'$/
+    end
+    
     context "With namespace" do
       specify "Single" do
         attrs.string(xmlns: { 
