@@ -4,6 +4,10 @@ module RML
       @attrs = attr_hash
     end
     
+    def empty?
+      @attrs.empty?
+    end
+    
     def to_s
       @attrs.map { |k, v| "#{k}='#{v}'" }.join ' '
     end

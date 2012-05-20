@@ -5,7 +5,7 @@ module RML
     end
 
     def attributes
-      @attributes ||= find_attributes
+      @attributes ||= RML::Attributes.new find_attributes
     end
     
     def text

@@ -31,21 +31,13 @@ module RML
     end
         
     def open_tag
-      "#{@name}#{attrs_to_s}"
-    end
-    
-    def attrs_to_s
-      @attributes.inject("") { |str, (k, v)| str << " #{k}='#{val_to_s v}'" }
+      @attributes.empty? ? "#{@name}" : "#{@name} #{@attributes}"
     end
     
     def elements_to_s
       @elements.map(&:to_s).join
     end
     
-    def val_to_s(val)
-      val.is_a?(Array) ? val.join(" ") : val
-    end
-        
     class DSL
       def initialize(element, &block)
         @element = element
