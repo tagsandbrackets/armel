@@ -7,6 +7,10 @@ describe RML::Attributes do
     attrs.string(id: 'foo', title: 'bar').should == "id='foo' title='bar'"
   end
   
+  it "should be able to build numeric attributes" do
+    attrs.string(num: 1, text: 'foo').should == "num=1 text='foo'"
+  end
+  
   it "should be able to build attributes with namespace" do
     attrs.string(xmlns: { 
       h: "http://www.w3.org/TR/html4/", 
