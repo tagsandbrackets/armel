@@ -82,6 +82,32 @@ end
 </contacts>
 ```
 
+```ruby
+RML::Document.string do
+  days = %w{ Sunday Monday Tuesday Wednesday Thursday Friday Saturday }
+  
+  weekdays {
+    days.each do |d|
+      day name: d
+    end
+  }
+end
+```
+
+### Output
+```xml
+<?xml version="1.0" ?>
+<weekdays>
+  <day name="Sunday"/>
+  <day name="Monday"/>
+  <day name="Tuesday"/>
+  <day name="Wednesday"/>
+  <day name="Thursday"/>
+  <day name="Friday"/>
+  <day name="Saturday"/>
+</weekdays>
+```
+
 ## Contributing
 
 * Fork the project
