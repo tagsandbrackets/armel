@@ -1,5 +1,5 @@
 RML - Ruby Markup Language
-[!Build Status](https://secure.travis-ci.org/2hf/rml)
+[[!Build Status](https://secure.travis-ci.org/2hf/rml)]
 ===
 
 Minimalistic Ruby DSL to create XML
@@ -33,12 +33,12 @@ require 'rubygems'
 require 'rml'
 
 RML::Document.string do
-  xml
+ root { xml }
 end
 ```
 #### Output
 ```xml
-<xml />
+<root><xml /></root>
 ```
 
 ### Tag with attributes
@@ -76,8 +76,10 @@ end
 require 'rubygems'
 require 'rml'
 
-RML::Document.string(:tag) do 
-  self << "Hello World"
+RML::Document.string do 
+  tag { 
+    self << "Hello World"
+  }
 end
 
 # Shorter syntax
