@@ -2,7 +2,7 @@ module RML
   class Element
     class DSL
       class Comment
-        def initialize(text)
+        def initialize(text = "")
           @val = text
         end
 
