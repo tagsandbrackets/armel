@@ -27,15 +27,6 @@ module RML
       end
     end
 
-    class CDATA
-      def initialize(text)
-        @val = text
-      end
-
-      def to_s
-        "<![CDATA[#{@val}]]>"
-      end
-    end
 
     class Comment
       def initialize(text)
