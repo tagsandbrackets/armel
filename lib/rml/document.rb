@@ -9,7 +9,7 @@ module RML
     end
     
     class << self
-      def string(&block)
+      def define(&block)
         self.new(&block).to_s
       end
     end
