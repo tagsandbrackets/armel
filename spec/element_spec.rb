@@ -54,6 +54,14 @@ describe RML::Element do
         }.should == "<script><![CDATA[ alert('hi') ]]><title /></script>"
       end
     end
+
+    context "Comment creation" do 
+      specify "Inside tags" do 
+        described_class.string(:tag) { 
+          comment! "This is a comment"
+        }.should == "<tag><!-- This is a comment --></tag>"
+      end
+    end
   end
   
   context "Nest elements" do

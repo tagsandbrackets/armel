@@ -11,7 +11,11 @@ module RML
       end
       
       def cdata!(text)
-        self << "<![CDATA[#{text}]]>"
+        self << CDATA.new(text).to_s
+      end
+
+      def comment!(text)
+        self << "<!-- #{text} -->"
       end
       
       def method_missing(method, *args, &block)
@@ -20,6 +24,16 @@ module RML
       
       def build
         @element
+      end
+    end
+
+    class CDATA
+      def initialize(text)
+        @val = text
+      end
+
+      def to_s
+        "<![CDATA[#{@val}]]>"
       end
     end
   end
