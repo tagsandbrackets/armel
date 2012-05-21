@@ -29,94 +29,57 @@ RML::Document.string { xml }
 ## Examples
 
 ```ruby
-require 'rubygems'
-require 'rml'
-
 RML::Document.string do
- root { xml }
-end
-```
-#### Output
-```xml
-<root><xml /></root>
-```
-
-### Tag with attributes
-```ruby
-require 'rubygems'
-require 'rml'
-
-RML::Document.string(:tag, attribute: 'value') 
-```
-
-#### Output
-```xml
-<tag attribute='value' />
-```
-
-### Nested tags with attributes
-```ruby
-require 'rubygems'
-require 'rml'
-
-RML::Document.string(:tag, attribute:'value') do 
-  nested
-end
-```
-
-#### Output
-```xml
-<tag attribute='value'>
-  <nested />
-</tag>
-```
-
-### Text inside tags
-```ruby
-require 'rubygems'
-require 'rml'
-
-RML::Document.string do 
-  tag { 
-    self << "Hello World"
+  contacts(group: "Personal") {
+    contact(name: "Rafa") {
+      numbers {
+        home { self << "856-556-5445" }
+        office { self << "856-556-5445" }
+        mobil { self << "856-556-5445" }
+      }
+    }
+    contact(name: "Omar") {
+      numbers {
+        home { self << "856-556-5445" }
+        office { self << "856-556-5445" }
+        mobil { self << "856-556-5445" }
+      }
+    }
   }
 end
-
-# Shorter syntax
-RML::Document.string(:tag, {}, "Hello World")
 ```
 
-#### Output
+### Output
 ```xml
-<tag>Hello World</tag>
-```
-
-### Text and attributes
-```ruby
-require 'rubygems'
-require 'rml'
-
-RML::Document.string(:tag, { attribute: 'value', "Hello World")
-```
-
-#### Output
-```xml
-<tag attribute='value'>Hello World</tag>
-```
-
-### CDATA Support
-```ruby
-require 'rubygems'
-require 'rml'
-
-RML::Document.string(:script) do
-  cdata! %{ alert('hi') }
-end
-```
-
-#### Output
-```xml
-<script><![CDATA[alert('hi') ]]></script>
+<?xml version="1.0" ?>
+<contacts group="Personal">
+  <contact name="Rafa">
+    <numbers>
+      <home>
+        856-556-5445
+      </home>
+      <office>
+        856-556-5445
+      </office>
+      <mobil>
+        856-556-5445
+      </mobil>
+    </numbers>
+  </contact>
+  <contact name="Omar">
+    <numbers>
+      <home>
+        856-556-5445
+      </home>
+      <office>
+        856-556-5445
+      </office>
+      <mobil>
+        856-556-5445
+      </mobil>
+    </numbers>
+  </contact>
+</contacts>
 ```
 
 ## Contributing
