@@ -1,4 +1,5 @@
 RML - Ruby Markup Language
+[!Build Status](https://secure.travis-ci.org/2hf/rml)
 ===
 
 Minimalistic Ruby DSL to create XML
