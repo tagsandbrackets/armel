@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Armel by 2hf</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Armel</h1>
+        <p>Ruby Markup Language</p>
+        <p class="view"><a href="https://github.com/2hf/armel">View the Project on GitHub <small>2hf/armel</small></a></p>
+        <ul>
+          <li><a href="https://github.com/2hf/armel/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/2hf/armel/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/2hf/armel">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>ARMEL - Ruby Markup Language</p>
+
+<h1><a href="http://travis-ci.org/2hf/armel"><img src="https://secure.travis-ci.org/2hf/armel.png" alt="Build Status"></a></h1>
+
+<p>Minimalistic Ruby DSL to create XML</p>
+
+<div class="highlight">
+<pre><span class="no">ARMEL</span><span class="o">::</span><span class="no">Document</span><span class="o">.</span><span class="n">string</span> <span class="p">{</span> <span class="n">xml</span> <span class="p">}</span>
+</pre>
+</div>
+
+
+<h2>Installation</h2>
+
+<pre><code>$ gem install armel
+</code></pre>
+
+<h2>Features</h2>
+
+<ul>
+<li>XML builder </li>
+<li>CDATA handler</li>
+<li>Namespace for XML handler</li>
+<li>High test coverage</li>
+</ul><h2>Philosophy</h2>
+
+<p>The ARMEL philosophy is to provide an small DSL for writting XML without
+  the need to learn any new language. Ruby is a very rich and expressive
+  language so the goal is to use it in everything including the creation
+  of XML.</p>
+
+<h2>Examples</h2>
+
+<div class="highlight">
+<pre><span class="no">ARMEL</span><span class="o">::</span><span class="no">Document</span><span class="o">.</span><span class="n">string</span> <span class="k">do</span>
+  <span class="n">contacts</span><span class="p">(</span><span class="n">group</span><span class="p">:</span> <span class="s2">"Personal"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">contact</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">"Rafa"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">numbers</span> <span class="p">{</span>
+        <span class="n">home</span> <span class="p">{</span> <span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="s2">"856-556-5445"</span> <span class="p">}</span>
+        <span class="n">office</span> <span class="p">{</span> <span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="s2">"856-556-5445"</span> <span class="p">}</span>
+        <span class="n">mobil</span> <span class="p">{</span> <span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="s2">"856-556-5445"</span> <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">contact</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s2">"Omar"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">numbers</span> <span class="p">{</span>
+        <span class="n">home</span> <span class="p">{</span> <span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="s2">"856-556-5445"</span> <span class="p">}</span>
+        <span class="n">office</span> <span class="p">{</span> <span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="s2">"856-556-5445"</span> <span class="p">}</span>
+        <span class="n">mobil</span> <span class="p">{</span> <span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="s2">"856-556-5445"</span> <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="k">end</span>
+</pre>
+</div>
+
+
+<h3>Output</h3>
+
+<div class="highlight">
+<pre><span class="cp">&lt;?xml version="1.0" ?&gt;</span>
+<span class="nt">&lt;contacts</span> <span class="na">group=</span><span class="s">"Personal"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;contact</span> <span class="na">name=</span><span class="s">"Rafa"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;numbers&gt;</span>
+      <span class="nt">&lt;home&gt;</span>
+        856-556-5445
+      <span class="nt">&lt;/home&gt;</span>
+      <span class="nt">&lt;office&gt;</span>
+        856-556-5445
+      <span class="nt">&lt;/office&gt;</span>
+      <span class="nt">&lt;mobil&gt;</span>
+        856-556-5445
+      <span class="nt">&lt;/mobil&gt;</span>
+    <span class="nt">&lt;/numbers&gt;</span>
+  <span class="nt">&lt;/contact&gt;</span>
+  <span class="nt">&lt;contact</span> <span class="na">name=</span><span class="s">"Omar"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;numbers&gt;</span>
+      <span class="nt">&lt;home&gt;</span>
+        856-556-5445
+      <span class="nt">&lt;/home&gt;</span>
+      <span class="nt">&lt;office&gt;</span>
+        856-556-5445
+      <span class="nt">&lt;/office&gt;</span>
+      <span class="nt">&lt;mobil&gt;</span>
+        856-556-5445
+      <span class="nt">&lt;/mobil&gt;</span>
+    <span class="nt">&lt;/numbers&gt;</span>
+  <span class="nt">&lt;/contact&gt;</span>
+<span class="nt">&lt;/contacts&gt;</span>
+</pre>
+</div>
+
+
+<div class="highlight">
+<pre><span class="no">ARMEL</span><span class="o">::</span><span class="no">Document</span><span class="o">.</span><span class="n">string</span> <span class="k">do</span>
+  <span class="n">days</span> <span class="o">=</span> <span class="sx">%w{ Sunday Monday Tuesday Wednesday Thursday Friday Saturday }</span>
+
+  <span class="n">weekdays</span> <span class="p">{</span>
+    <span class="n">days</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">d</span><span class="o">|</span>
+      <span class="n">day</span> <span class="nb">name</span><span class="p">:</span> <span class="n">d</span>
+    <span class="k">end</span>
+  <span class="p">}</span>
+<span class="k">end</span>
+</pre>
+</div>
+
+
+<h3>Output</h3>
+
+<div class="highlight">
+<pre><span class="cp">&lt;?xml version="1.0" ?&gt;</span>
+<span class="nt">&lt;weekdays&gt;</span>
+  <span class="nt">&lt;day</span> <span class="na">name=</span><span class="s">"Sunday"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;day</span> <span class="na">name=</span><span class="s">"Monday"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;day</span> <span class="na">name=</span><span class="s">"Tuesday"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;day</span> <span class="na">name=</span><span class="s">"Wednesday"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;day</span> <span class="na">name=</span><span class="s">"Thursday"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;day</span> <span class="na">name=</span><span class="s">"Friday"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;day</span> <span class="na">name=</span><span class="s">"Saturday"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/weekdays&gt;</span>
+</pre>
+</div>
+
+
+<h2>Contributing</h2>
+
+<ul>
+<li>Fork the project</li>
+<li>Write spec </li>
+<li>Make changes </li>
+<li>Send pull request</li>
+</ul><h2>Contributors</h2>
+
+<pre><code>Authors
+  Omar Rodriguez
+  Rafael George
+</code></pre>
+
+<h2>License</h2>
+
+<p>Copyright (c) 2012 Omar Rodriguez, Rafael George</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/2hf">2hf</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
