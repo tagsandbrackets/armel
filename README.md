@@ -1,5 +1,5 @@
 ARMEL - Ruby Markup Language
-[![Build Status](https://secure.travis-ci.org/2hf/armel.png)](http://travis-ci.org/2hf/rml)
+[![Build Status](https://secure.travis-ci.org/2hf/armel.png)](http://travis-ci.org/2hf/armel)
 ===
 
 Minimalistic Ruby DSL to create XML
