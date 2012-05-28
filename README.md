@@ -1,16 +1,16 @@
-RML - Ruby Markup Language
-[![Build Status](https://secure.travis-ci.org/2hf/rml.png)](http://travis-ci.org/2hf/rml)
+ARMEL - Ruby Markup Language
+[![Build Status](https://secure.travis-ci.org/2hf/armel.png)](http://travis-ci.org/2hf/rml)
 ===
 
 Minimalistic Ruby DSL to create XML
 
 ```ruby
-RML::Document.string { xml }
+ARMEL::Document.string { xml }
 ```
 
 ## Installation
 
-    $ gem install rml
+    $ gem install armel
 
 ## Features
 
@@ -21,7 +21,7 @@ RML::Document.string { xml }
 
 ## Philosophy 
 
-  The RML philosophy is to provide an small DSL for writting XML without
+  The ARMEL philosophy is to provide an small DSL for writting XML without
   the need to learn any new language. Ruby is a very rich and expressive
   language so the goal is to use it in everything including the creation
   of XML.
@@ -29,7 +29,7 @@ RML::Document.string { xml }
 ## Examples
 
 ```ruby
-RML::Document.string do
+ARMEL::Document.string do
   contacts(group: "Personal") {
     contact(name: "Rafa") {
       numbers {
@@ -83,7 +83,7 @@ end
 ```
 
 ```ruby
-RML::Document.string do
+ARMEL::Document.string do
   days = %w{ Sunday Monday Tuesday Wednesday Thursday Friday Saturday }
   
   weekdays {

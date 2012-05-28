@@ -1,4 +1,4 @@
-module RML
+module ARMEL
   class Attributes
     def initialize(attr_hash, ns = nil)
       @attrs = attr_hash ||= {}

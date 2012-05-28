@@ -1,4 +1,4 @@
-module RML
+module ARMEL
   class Element
     class Factory
       class << self
@@ -14,7 +14,7 @@ module RML
         end
 
         def attributes
-          @attributes ||= RML::Attributes.new find_attributes
+          @attributes ||= ARMEL::Attributes.new find_attributes
         end
         
         def elements

@@ -1,11 +1,11 @@
-require_relative 'rml/version'
-require_relative 'rml/attributes'
-require_relative 'rml/element/factory'
-require_relative 'rml/element/dsl'
-require_relative 'rml/elements'
-require_relative 'rml/element'
-require_relative 'rml/document'
+require_relative 'armel/version'
+require_relative 'armel/attributes'
+require_relative 'armel/element/factory'
+require_relative 'armel/element/dsl'
+require_relative 'armel/elements'
+require_relative 'armel/element'
+require_relative 'armel/document'
 
-module RML
+module ARMEL
   # Your code goes here...
 end

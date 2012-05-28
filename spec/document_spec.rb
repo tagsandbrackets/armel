@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RML::Document do
+describe ARMEL::Document do
   specify "Empty" do
     described_class.string.should == ''
   end

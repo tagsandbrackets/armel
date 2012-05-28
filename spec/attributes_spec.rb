@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RML::Attributes do
+describe ARMEL::Attributes do
   context "Build attributes string" do
     specify "Attributes list" do
       described_class.string(id: 'foo', title: 'bar').should == "id='foo' title='bar'"
@@ -22,17 +22,17 @@ describe RML::Attributes do
       specify "Single" do
         described_class.string(xmlns: { 
           h: "http://www.w3.org/TR/html4/", 
-          r: "http://www.2hf.com/rml/" 
-        }).should == "xmlns:h='http://www.w3.org/TR/html4/' xmlns:r='http://www.2hf.com/rml/'"
+          r: "http://www.2hf.com/armel/" 
+        }).should == "xmlns:h='http://www.w3.org/TR/html4/' xmlns:r='http://www.2hf.com/armel/'"
       end
       
       specify "Multiple" do
         described_class.string(h: { 
           id: 1, 
           class: 'foo' 
-        }, rml: {
+        }, armel: {
           test: 'yeah'
-        }).should == "h:id=1 h:class='foo' rml:test='yeah'"
+        }).should == "h:id=1 h:class='foo' armel:test='yeah'"
       end
     end
   end

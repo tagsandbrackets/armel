@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RML::Element do
+describe ARMEL::Element do
   context "Single elmenet" do
     specify "Empty" do
       described_class.string(:mytag).should == "<mytag />"

@@ -1,4 +1,4 @@
-module RML
+module ARMEL
   class Elements
     def initialize(*elements)
       @elements = []

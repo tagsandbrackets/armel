@@ -1,6 +1,6 @@
 require 'simplecov'
 SimpleCov.start
-require_relative "../lib/rml"
+require_relative "../lib/armel"
 
 RSpec.configure do |config|
   # Use color in STDOUT

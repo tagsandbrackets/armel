@@ -1,4 +1,4 @@
-module RML
+module ARMEL
   class Element
     class DSL
       def initialize(element, &block)

@@ -1,4 +1,4 @@
-module RML
+module ARMEL
   class Document < Element
     def initialize(elements = nil, &block)
       super :root, {}, elements || Elements.new, &block

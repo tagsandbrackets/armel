@@ -1,4 +1,4 @@
-module RML
+module ARMEL
   class Element
     def initialize(name, attributes = {}, elements, &block)
       @name = name
